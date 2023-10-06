@@ -1,12 +1,15 @@
+'use client'
+
 import { Separator } from '@/components/ui/separator'
 import { Metadata } from 'next'
 import { ProfileResume } from './components/profile-resume'
 import { SidebarNav } from '@/components/sidebar-nav'
+import { QueryClient, QueryClientProvider } from 'react-query'
 
-export const metadata: Metadata = {
-  title: 'Forms',
-  description: 'Advanced form example using react-hook-form and Zod.',
-}
+// export const metadata: Metadata = {
+//   title: 'Forms',
+//   description: 'Advanced form example using react-hook-form and Zod.',
+// }
 
 const sidebarNavItems = [
   {
@@ -31,10 +34,12 @@ interface SettingsLayoutProps {
   children: React.ReactNode
 }
 
+const queryClient = new QueryClient()
+
 export default function SettingsLayout({ children }: SettingsLayoutProps) {
   return (
     <>
-      <div className="hidden space-y-6 p-4 md:block max-w-app mx-auto">
+      <div className="space-y-6 p-4 max-w-app mx-auto">
         <ProfileResume />
 
         <Separator className="my-6" />
@@ -44,7 +49,11 @@ export default function SettingsLayout({ children }: SettingsLayoutProps) {
             <SidebarNav items={sidebarNavItems} />
           </aside>
 
-          <div className="flex-1 lg:max-w-2xl">{children}</div>
+          <div className="flex-1">
+            <QueryClientProvider client={queryClient}>
+              {children}
+            </QueryClientProvider>
+          </div>
         </div>
       </div>
     </>

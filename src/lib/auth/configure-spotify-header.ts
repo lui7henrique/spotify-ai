@@ -1,4 +1,4 @@
-import { spotify } from '@/services/spotify'
+import { spotifyClient } from '@/services/spotify/client'
 import { getToken } from 'next-auth/jwt'
 import { NextRequest } from 'next/server'
 
@@ -11,5 +11,5 @@ export const configureSpotifyHeaders = async (req: NextRequest) => {
     throw new Error('Token de acesso não disponível.')
   }
 
-  spotify.defaults.headers.common.Authorization = `Bearer ${token.accessToken}`
+  spotifyClient.defaults.headers.common.Authorization = `Bearer ${token.accessToken}`
 }
