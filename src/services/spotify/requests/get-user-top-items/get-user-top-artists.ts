@@ -15,7 +15,7 @@ export type Image = {
 
 export type Type = 'artist'
 
-export type Item = {
+export type ArtistItem = {
   external_urls: ExternalUrls
   followers: Followers
   genres: string[]
@@ -29,7 +29,7 @@ export type Item = {
 }
 
 export type GetUserTopArtists = {
-  items: Item[]
+  items: ArtistItem[]
   total: number
   limit: number
   offset: number

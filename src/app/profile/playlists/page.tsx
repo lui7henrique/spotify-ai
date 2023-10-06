@@ -3,16 +3,16 @@
 import { api } from '@/services/api'
 import { GetCurrentUserPlaylists } from '@/services/spotify/requests/get-current-user-playlists/types'
 import { useQuery } from 'react-query'
-import { PlaylistItem } from '../components/playlist-item'
 import { Separator } from '@/components/ui/separator'
+import { PlaylistItem } from '@/components/playlist-item'
 
 export default function PlaylistsProfilePage() {
   const { data, isLoading } = useQuery(['playlists'], async () => {
-    const response = await api.get<GetCurrentUserPlaylists>(
+    const { data } = await api.get<GetCurrentUserPlaylists>(
       '/spotify/me/playlists',
     )
 
-    return response.data
+    return data
   })
 
   if (isLoading) {

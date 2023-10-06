@@ -47,7 +47,7 @@ export type Album = {
   uri: string
 }
 
-export type Item = {
+export type TrackItem = {
   album: Album
   artists: Artist[]
   available_markets: string[]
@@ -68,7 +68,7 @@ export type Item = {
 }
 
 export type GetUserTopTracks = {
-  items: Item[]
+  items: TrackItem[]
   total: number
   limit: number
   offset: number

@@ -2,9 +2,9 @@
 
 import { Separator } from '@/components/ui/separator'
 import { Metadata } from 'next'
-import { ProfileResume } from './components/profile-resume'
 import { SidebarNav } from '@/components/sidebar-nav'
 import { QueryClient, QueryClientProvider } from 'react-query'
+import { ProfileResume } from '@/components/profile-resume'
 
 // export const metadata: Metadata = {
 //   title: 'Forms',
@@ -23,6 +23,10 @@ const sidebarNavItems = [
   {
     title: 'Artistas',
     href: '/profile/artists',
+  },
+  {
+    title: 'Faixas',
+    href: '/profile/tracks',
   },
   {
     title: 'Gêneros',
@@ -45,7 +49,7 @@ export default function SettingsLayout({ children }: SettingsLayoutProps) {
         <Separator className="my-6" />
 
         <div className="flex flex-col space-y-8 lg:flex-row lg:space-x-12 lg:space-y-0">
-          <aside className="-mx-4 lg:w-1/5">
+          <aside className="-mx-4 w-screen overflow-x-auto lg:w-1/5">
             <SidebarNav items={sidebarNavItems} />
           </aside>
 
