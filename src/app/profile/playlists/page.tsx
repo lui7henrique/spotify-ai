@@ -36,7 +36,7 @@ export default function PlaylistsProfilePage() {
 
       <Separator />
 
-      <div className="grid grid-cols-5 gap-4">
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
         {data.items.map((item) => {
           return <PlaylistItem item={item} key={item.id} />
         })}
