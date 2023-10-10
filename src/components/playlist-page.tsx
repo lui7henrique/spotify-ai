@@ -24,8 +24,6 @@ export const PlaylistPage = ({ id }: PlaylistProps) => {
 
   const { images, name, description, tracks } = data
 
-  console.log({ images })
-
   return (
     <div className="space-y-8 p-4">
       <div className="flex items-end gap-4">

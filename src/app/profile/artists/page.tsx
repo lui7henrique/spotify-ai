@@ -5,14 +5,24 @@ import { GetUserTopArtists } from '@/services/spotify/requests/get-user-top-item
 import { ArtistItem, ArtistItemSkeleton } from '@/components/artist-item'
 import { api } from '@/services/api'
 import { useQuery } from 'react-query'
-import { useCallback } from 'react'
+import { useCallback, useState } from 'react'
+import { TimeRangeDropdown } from '@/components/term-dropdown'
+import { TimeRange } from '@/types/time-range'
 
 export default function ArtistsProfilePage() {
-  const { data, isLoading } = useQuery(['artists'], async () => {
-    const { data } = await api.get<GetUserTopArtists>('/spotify/me/artists')
+  const [selectedTimeRange, setSelectedTimeRange] =
+    useState<TimeRange>('medium_term')
 
-    return data
-  })
+  const { data, isLoading } = useQuery(
+    ['artists', selectedTimeRange],
+    async () => {
+      const { data } = await api.get<GetUserTopArtists>(
+        `/spotify/me/artists?time_range=${selectedTimeRange}`,
+      )
+
+      return data
+    },
+  )
 
   const Content = useCallback(() => {
     if (isLoading) {
@@ -49,6 +59,12 @@ export default function ArtistsProfilePage() {
       </div>
 
       <Separator />
+
+      <TimeRangeDropdown
+        selectedTimeRange={selectedTimeRange}
+        handleSelectTimeRange={(timeRange) => setSelectedTimeRange(timeRange)}
+      />
+
       <Content />
     </div>
   )

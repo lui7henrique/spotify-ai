@@ -8,6 +8,7 @@ import { Separator } from '@/components/ui/separator'
 import { PlaylistItem, PlaylistItemSkeleton } from '@/components/playlist-item'
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog'
 import { PlaylistPage } from '@/components/playlist-page'
+import { TimeRangeDropdown } from '@/components/term-dropdown'
 
 export default function PlaylistsProfilePage() {
   const { data, isLoading } = useQuery(['playlists'], async () => {
@@ -66,6 +67,7 @@ export default function PlaylistsProfilePage() {
       </div>
 
       <Separator />
+
       <Content />
     </div>
   )

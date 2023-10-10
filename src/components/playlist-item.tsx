@@ -13,8 +13,6 @@ export const PlaylistItem = (props: PlaylistItemProps) => {
     item: { name, images, owner },
   } = props
 
-  console.log({ name })
-
   return (
     <div className="w-full rounded-lg bg-foreground/5 p-4 transition-all hover:bg-foreground/10">
       <figure className="relative aspect-square w-full overflow-hidden rounded-lg shadow-md">
