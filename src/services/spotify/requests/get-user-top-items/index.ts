@@ -5,7 +5,7 @@ import { GetUserTopTracks } from './get-user-top-tracks'
 
 export const getUserTopItems = async <T extends 'artists' | 'tracks'>(
   type: T,
-  timeRange: TimeRange,
+  timeRange: TimeRange = 'medium_term',
 ): Promise<T extends 'artists' ? GetUserTopArtists : GetUserTopTracks> => {
   const response = await spotifyClient.get(`/me/top/${type}`, {
     params: {

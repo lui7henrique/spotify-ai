@@ -1,19 +1,19 @@
 'use client'
 
 import { ModeToggle } from '@/components/mode-toggle'
-import { DollarSign, Headphones, Music } from 'lucide-react'
 import Link from 'next/link'
 
 export const Header = () => {
   return (
-    <header className="border-b w-full">
-      <div className="max-w-app flex justify-between items-center w-full mx-auto p-4">
+    <header className="w-full border-b">
+      <div className="mx-auto flex w-full max-w-app items-center justify-between p-4">
         <div className="flex items-center gap-2">
           <Link
             href="/"
-            className="p-1 flex items-center rounded-sm bg-primary"
+            className="text-bold flex items-center gap-2 rounded-sm text-2xl  font-bold italic"
           >
-            <Headphones className="stroke-background" width={24} height={24} />
+            {/* <Disc3 /> */}
+            Spot
           </Link>
         </div>
 

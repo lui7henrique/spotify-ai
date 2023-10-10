@@ -3,10 +3,12 @@
 import { api } from '@/services/api'
 
 import { useQuery } from 'react-query'
+import { useCallback } from 'react'
+
 import { Separator } from '@/components/ui/separator'
+import { TrackItem, TrackItemSkeleton } from '@/components/track-item'
 
 import { GetUserTopTracks } from '@/services/spotify/requests/get-user-top-items/get-user-top-tracks'
-import { TrackItem } from '@/components/track-item'
 
 export default function TracksProfilePage() {
   const { data, isLoading } = useQuery(['tracks'], async () => {
@@ -15,13 +17,29 @@ export default function TracksProfilePage() {
     return data
   })
 
-  if (isLoading) {
-    return <p>loading... (skeleton in the future)</p>
-  }
+  const Content = useCallback(() => {
+    if (isLoading) {
+      return (
+        <div className="flex flex-col gap-1">
+          {Array.from({ length: 15 }).map((_, index) => {
+            return <TrackItemSkeleton key={index} />
+          })}
+        </div>
+      )
+    }
 
-  if (!data) {
-    return <p>no data</p>
-  }
+    if (!data) {
+      return <p>Nenhuma faixa aqui :(</p>
+    }
+
+    return (
+      <div className="flex flex-col gap-1">
+        {data.items.map((item, index) => {
+          return <TrackItem item={item} key={item.id} index={index + 1} />
+        })}
+      </div>
+    )
+  }, [data, isLoading])
 
   return (
     <div className="space-y-6 ">
@@ -34,12 +52,7 @@ export default function TracksProfilePage() {
       </div>
 
       <Separator />
-
-      <div className="flex flex-col gap-1">
-        {data.items.map((item, index) => {
-          return <TrackItem item={item} key={item.id} index={index + 1} />
-        })}
-      </div>
+      <Content />
     </div>
   )
 }

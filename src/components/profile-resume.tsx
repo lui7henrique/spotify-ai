@@ -9,7 +9,7 @@ export const ProfileResume = () => {
   if (!data?.user?.name) return <></>
 
   return (
-    <div className="flex gap-4 items-end">
+    <div className="flex items-end gap-4">
       <Image
         src={
           data.user.image ??

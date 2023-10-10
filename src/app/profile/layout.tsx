@@ -1,7 +1,6 @@
 'use client'
 
 import { Separator } from '@/components/ui/separator'
-import { Metadata } from 'next'
 import { SidebarNav } from '@/components/sidebar-nav'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { ProfileResume } from '@/components/profile-resume'
@@ -43,7 +42,7 @@ const queryClient = new QueryClient()
 export default function SettingsLayout({ children }: SettingsLayoutProps) {
   return (
     <>
-      <div className="space-y-6 p-4 max-w-app mx-auto">
+      <div className="mx-auto max-w-app space-y-6 p-4">
         <ProfileResume />
 
         <Separator className="my-6" />
