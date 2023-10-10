@@ -1,24 +1,34 @@
 'use client'
 
 import { useQuery } from 'react-query'
-import { useCallback } from 'react'
+import { useCallback, useState } from 'react'
 
 import { api } from '@/services/api'
 import { Separator } from '@/components/ui/separator'
 import { GetGenres } from '@/services/spotify/requests/get-genres'
 import { GenreItem, GenreItemSkeleton } from '@/components/genre-item'
+import { TimeRange } from '@/types/time-range'
+import { TimeRangeDropdown } from '@/components/term-dropdown'
 
 export default function GenresProfilePage() {
-  const { data, isLoading } = useQuery(['genres'], async () => {
-    const { data } = await api.get<GetGenres>('/spotify/me/genres')
+  const [selectedTimeRange, setSelectedTimeRange] =
+    useState<TimeRange>('medium_term')
 
-    return data
-  })
+  const { data, isLoading } = useQuery(
+    ['genres', selectedTimeRange],
+    async () => {
+      const { data } = await api.get<GetGenres>(
+        `/spotify/me/genres?time_range=${selectedTimeRange}`,
+      )
+
+      return data
+    },
+  )
 
   const Content = useCallback(() => {
     if (isLoading) {
       return (
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
+        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
           {Array.from({ length: 15 }).map((_, index) => {
             return <GenreItemSkeleton key={index} />
           })}
@@ -27,7 +37,7 @@ export default function GenresProfilePage() {
     }
 
     if (!data) {
-      return <p>Sem playlists aqui :(</p>
+      return <p>Parece que você não tem ouvido nada :(</p>
     }
 
     return (
@@ -52,6 +62,12 @@ export default function GenresProfilePage() {
       </div>
 
       <Separator />
+
+      <TimeRangeDropdown
+        selectedTimeRange={selectedTimeRange}
+        handleSelectTimeRange={(timeRange) => setSelectedTimeRange(timeRange)}
+      />
+
       <Content />
     </div>
   )

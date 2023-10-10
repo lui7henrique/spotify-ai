@@ -3,19 +3,30 @@
 import { api } from '@/services/api'
 
 import { useQuery } from 'react-query'
-import { useCallback } from 'react'
+import { useCallback, useState } from 'react'
 
 import { Separator } from '@/components/ui/separator'
 import { TrackItem, TrackItemSkeleton } from '@/components/track-item'
 
 import { GetUserTopTracks } from '@/services/spotify/requests/get-user-top-items/get-user-top-tracks'
 
-export default function TracksProfilePage() {
-  const { data, isLoading } = useQuery(['tracks'], async () => {
-    const { data } = await api.get<GetUserTopTracks>('/spotify/me/tracks')
+import { TimeRange } from '@/types/time-range'
+import { TimeRangeDropdown } from '@/components/term-dropdown'
 
-    return data
-  })
+export default function TracksProfilePage() {
+  const [selectedTimeRange, setSelectedTimeRange] =
+    useState<TimeRange>('medium_term')
+
+  const { data, isLoading } = useQuery(
+    ['tracks', selectedTimeRange],
+    async () => {
+      const { data } = await api.get<GetUserTopTracks>(
+        `/spotify/me/tracks?time_range=${selectedTimeRange}`,
+      )
+
+      return data
+    },
+  )
 
   const Content = useCallback(() => {
     if (isLoading) {
@@ -52,6 +63,12 @@ export default function TracksProfilePage() {
       </div>
 
       <Separator />
+
+      <TimeRangeDropdown
+        selectedTimeRange={selectedTimeRange}
+        handleSelectTimeRange={(timeRange) => setSelectedTimeRange(timeRange)}
+      />
+
       <Content />
     </div>
   )

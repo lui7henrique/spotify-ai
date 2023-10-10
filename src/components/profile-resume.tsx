@@ -15,8 +15,8 @@ export const ProfileResume = () => {
           data.user.image ??
           `https://ui-avatars.com/api/?name=${data?.user?.name}&bold=true`
         }
-        width={125}
-        height={125}
+        width={150}
+        height={150}
         alt={data.user.name}
         quality={100}
         className="rounded-full"
