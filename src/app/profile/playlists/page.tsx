@@ -8,7 +8,6 @@ import { Separator } from '@/components/ui/separator'
 import { PlaylistItem, PlaylistItemSkeleton } from '@/components/playlist-item'
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog'
 import { PlaylistPage } from '@/components/playlist-page'
-import { TimeRangeDropdown } from '@/components/term-dropdown'
 
 export default function PlaylistsProfilePage() {
   const { data, isLoading } = useQuery(['playlists'], async () => {
@@ -58,11 +57,11 @@ export default function PlaylistsProfilePage() {
   return (
     <div className="space-y-6 ">
       <div>
-        <h3 className="text-lg font-medium">Suas playlists</h3>
+        <h3 className="text-lg font-medium">Your playlists</h3>
         <p className="text-sm text-muted-foreground">
-          Explore suas playlists pessoais e mergulhe nas suas preferências
-          musicais. Descubra estatísticas fascinantes sobre os gêneros que mais
-          curte, os artistas que você mais ouve e muito mais.
+          Explore your personal playlists and delve into your preferences
+          musicals. Discover fascinating statistics about the genres that most
+          likes, the artists you listen to most and much more.
         </p>
       </div>
 

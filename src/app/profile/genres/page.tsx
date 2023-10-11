@@ -37,7 +37,8 @@ export default function GenresProfilePage() {
     }
 
     if (!data) {
-      return <p>Parece que você não tem ouvido nada :(</p>
+      // TODO: MAKE PRETTY EMPTY COMPONENT
+      return <p>empty(</p>
     }
 
     return (

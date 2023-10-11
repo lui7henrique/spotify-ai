@@ -6,10 +6,10 @@ export default function ProfileResumePage() {
   return (
     <div className="space-y-6">
       <div>
-        <h3 className="text-lg font-medium">O melhor do seu Spotify</h3>
+        <h3 className="text-lg font-medium">Your spotify stats</h3>
         <p className="text-sm text-muted-foreground">
-          Veja estatísticas interessantes sobre suas preferências musicais,
-          incluindo gêneros, artistas mais ouvidos e muito mais.
+          Look your amazing stats about your music preferences, includings
+          genres, most listened to artists and more!
         </p>
       </div>
       <Separator />

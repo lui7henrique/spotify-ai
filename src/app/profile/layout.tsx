@@ -12,7 +12,7 @@ import { ProfileResume } from '@/components/profile-resume'
 
 const sidebarNavItems = [
   {
-    title: 'Resumo',
+    title: 'Resume',
     href: '/profile',
   },
   {
@@ -20,15 +20,15 @@ const sidebarNavItems = [
     href: '/profile/playlists',
   },
   {
-    title: 'Artistas',
+    title: 'Artists',
     href: '/profile/artists',
   },
   {
-    title: 'Faixas',
+    title: 'Tracks',
     href: '/profile/tracks',
   },
   {
-    title: 'Gêneros',
+    title: 'Genres',
     href: '/profile/genres',
   },
 ]

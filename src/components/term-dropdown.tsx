@@ -16,15 +16,15 @@ const timeRangesOptions: Array<{
 }> = [
   {
     value: 'short_term',
-    label: 'Curto prazo (4 semanas)',
+    label: 'Short (4 weeks)',
   },
   {
     value: 'medium_term',
-    label: 'Médio prazo (6 meses)',
+    label: 'Medium (6 months)',
   },
   {
     value: 'long_term',
-    label: 'Longo prazo (todo tempo)',
+    label: 'Long (all time)',
   },
 ]
 
@@ -42,12 +42,12 @@ export const TimeRangeDropdown = ({
       <DropdownMenuTrigger asChild>
         <Button variant="outline" size="sm" className="flex">
           <MixerHorizontalIcon className="mr-2 h-4 w-4" />
-          Período
+          Time-range
         </Button>
       </DropdownMenuTrigger>
 
       <DropdownMenuContent align="start" className="w-fit">
-        <DropdownMenuLabel>Alterar período</DropdownMenuLabel>
+        <DropdownMenuLabel>Change time-range</DropdownMenuLabel>
 
         <DropdownMenuSeparator />
 

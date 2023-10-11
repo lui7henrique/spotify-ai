@@ -36,8 +36,9 @@ export const PlaylistPage = ({ id }: PlaylistProps) => {
         <div className="w-3/4 space-y-4">
           <div>
             <span className="text-sm text-muted-foreground">
-              Playlist pública
+              Public playlist
             </span>
+
             <h1 className="text-5xl font-bold">{name}</h1>
             <div
               className="text-lg text-muted-foreground"

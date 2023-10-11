@@ -55,10 +55,11 @@ export default function TracksProfilePage() {
   return (
     <div className="space-y-6 ">
       <div>
-        <h3 className="text-lg font-medium">Faixas mais ouvidas</h3>
+        <h3 className="text-lg font-medium">Most listened to tracks</h3>
+
         <p className="text-sm text-muted-foreground">
-          Explore suas preferências musicais e descubra estatísticas incríveis
-          sobre as faixas que você mais ouve.
+          Explore your musical preferences and discover incredible statistics
+          about the tracks you listen to the most.
         </p>
       </div>
 

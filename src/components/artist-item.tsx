@@ -17,7 +17,7 @@ export const ArtistItem = ({ item }: ArtistItemProps) => {
 
       <div className="mt-4 pb-2">
         <h3 className="line-clamp-1 text-sm font-bold">{name ?? ''}</h3>
-        <h4 className="text-sm text-muted-foreground">Artista</h4>
+        <h4 className="text-sm text-muted-foreground">Artist</h4>
       </div>
     </div>
   )

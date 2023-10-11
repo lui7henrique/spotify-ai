@@ -39,7 +39,7 @@ export const GenreItem = ({ genre }: GenreItemProps) => {
             </h3>
 
             <h4 className="text-sm text-muted-foreground">
-              {amount} {amount > 1 ? 'artistas' : 'artista'}
+              {amount} {amount > 1 ? 'artists' : 'artist'}
             </h4>
           </div>
         </div>

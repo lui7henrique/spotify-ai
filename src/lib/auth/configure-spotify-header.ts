@@ -8,7 +8,7 @@ export const configureSpotifyHeaders = async (req: NextRequest) => {
   const token = await getToken({ req, secret })
 
   if (!token) {
-    throw new Error('Token de acesso não disponível.')
+    throw new Error('Access token not available.')
   }
 
   spotifyClient.defaults.headers.common.Authorization = `Bearer ${token.accessToken}`

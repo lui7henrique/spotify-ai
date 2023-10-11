@@ -36,7 +36,8 @@ export default function ArtistsProfilePage() {
     }
 
     if (!data) {
-      return <p>Não há artistas aqui :(</p>
+      // TODO: MAKE A PRETTY EMPTY COMPONENT
+      return <p>empty(</p>
     }
 
     return (
@@ -51,10 +52,10 @@ export default function ArtistsProfilePage() {
   return (
     <div className="space-y-6">
       <div>
-        <h3 className="text-lg font-medium">Artistas mais ouvidos</h3>
+        <h3 className="text-lg font-medium">Most listened artists</h3>
         <p className="text-sm text-muted-foreground">
-          Descubra estatísticas incríveis sobre os artistas que você mais ouve,
-          os gêneros que dominam sua playlist e muito mais.
+          Discover incredible statistics about the artists you listen to most,
+          the genres that dominate your playlist and much more.
         </p>
       </div>
 
